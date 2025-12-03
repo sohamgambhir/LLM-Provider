@@ -1,0 +1,64 @@
+{
+  "rules": [
+    {
+      "name": "code_queries",
+      "description": "Route code-related queries to GPT-4 for best results",
+      "condition": {
+        "query_type": "code"
+      },
+      "provider": "openai",
+      "model": "gpt-4",
+      "priority": 1
+    },
+    {
+      "name": "long_context",
+      "description": "Route long queries to Claude for better context handling",
+      "condition": {
+        "token_count_min": 8000
+      },
+      "provider": "anthropic",
+      "model": "claude-3-sonnet-20240229",
+      "priority": 2
+    },
+    {
+      "name": "creative_writing",
+      "description": "Route creative queries to Claude",
+      "condition": {
+        "query_type": "creative"
+      },
+      "provider": "anthropic",
+      "model": "claude-3-opus-20240229",
+      "priority": 3
+    },
+    {
+      "name": "cost_optimized",
+      "description": "Route simple queries to cost-effective models",
+      "condition": {
+        "token_count_max": 1000,
+        "priority": "low_cost"
+      },
+      "provider": "google",
+      "model": "gemini-1.5-flash",
+      "priority": 4
+    },
+    {
+      "name": "analytical_queries",
+      "description": "Route analytical queries to Gemini Pro",
+      "condition": {
+        "query_type": "analytical"
+      },
+      "provider": "google",
+      "model": "gemini-1.5-pro",
+      "priority": 5
+    }
+  ],
+  "fallback_order": [
+    "openai",
+    "anthropic",
+    "google"
+  ],
+  "default_provider": "openai",
+  "default_model": "gpt-3.5-turbo",
+  "timeout_seconds": 30,
+  "max_retries": 3
+}

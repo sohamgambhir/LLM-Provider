@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Routing Service - Intelligent AI Provider Management</title>
+    <meta name="description" content="Intelligent LLM routing service with automatic fallback and cost optimization">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🤖</div>
+                    <h1>LLM Router</h1>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Active Providers</span>
+                        <span class="stat-value" id="provider-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Cost</span>
+                        <span class="stat-value" id="total-cost">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Provider Status</h3>
+                    <div id="provider-status" class="provider-list">
+                        <div class="loading">Loading providers...</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Routing Info</h3>
+                    <div id="routing-info" class="routing-info">
+                        <p class="info-text">Send a query to see routing details</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Query Settings</h3>
+                    <div class="settings-form">
+                        <label for="provider-select">Preferred Provider</label>
+                        <select id="provider-select" class="form-select">
+                            <option value="">Auto (Smart Routing)</option>
+                        </select>
+                        
+                        <div class="setting-info">
+                            <small>Leave on Auto for intelligent routing based on query type</small>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <main class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="welcome-message">
+                        <div class="welcome-icon">✨</div>
+                        <h2>Welcome to LLM Router</h2>
+                        <p>Your intelligent AI assistant with automatic provider selection and fallback</p>
+                        <div class="features">
+                            <div class="feature">
+                                <span class="feature-icon">🎯</span>
+                                <span>Smart Routing</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🔄</span>
+                                <span>Auto Fallback</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">💰</span>
+                                <span>Cost Optimized</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="user-input" 
+                            placeholder="Ask me anything... (Press Enter to send, Shift+Enter for new line)"
+                            rows="1"
+                        ></textarea>
+                        <button id="send-button" class="send-button" title="Send message">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
